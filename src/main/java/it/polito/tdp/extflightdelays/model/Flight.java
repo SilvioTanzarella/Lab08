@@ -16,6 +16,16 @@ public class Flight {
 	private int distance;
 	private LocalDateTime arrivalDate;
 	private Double arrivalDelay;
+	private int frequenze;
+	
+
+	public Flight(int originAirportId, int destinationAirportId, int distance, int frequenze) {
+		super();
+		this.originAirportId = originAirportId;
+		this.destinationAirportId = destinationAirportId;
+		this.distance = distance;
+		this.frequenze = frequenze;
+	}
 
 	public Flight(int id, int airlineId, int flightNumber, String tailNumber, int originAirportId,
 			int destinationAirportId, LocalDateTime scheduledDepartureDate, Double departureDelay, Double elapsedTime,
@@ -32,6 +42,7 @@ public class Flight {
 		this.distance = distance;
 		this.arrivalDate = arrivalDate;
 		this.arrivalDelay = arrivalDelay;
+		this.frequenze = 0;
 	}
 
 	public int getId() {
@@ -129,12 +140,21 @@ public class Flight {
 	public void setArrivalDelay(Double arrivalDelay) {
 		this.arrivalDelay = arrivalDelay;
 	}
+	
+	public int getFrequenze() {
+		return frequenze;
+	}
+
+	public void setFrequenze(int frequenze) {
+		this.frequenze = frequenze;
+	}
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + airlineId;
+		result = prime * result + id;
 		return result;
 	}
 
@@ -147,7 +167,7 @@ public class Flight {
 		if (getClass() != obj.getClass())
 			return false;
 		Flight other = (Flight) obj;
-		if (airlineId != other.airlineId)
+		if (id != other.id)
 			return false;
 		return true;
 	}
